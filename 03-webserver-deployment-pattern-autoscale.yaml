@@ -53,7 +53,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    run: webserver
+    run: jojoe-nginx
   ports:
     - protocol: TCP
       port: 80
