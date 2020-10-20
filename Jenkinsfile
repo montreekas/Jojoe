@@ -23,9 +23,10 @@ pipeline {
         }
       }
     }
-	  stage('Deployment K8s') {
+	  stage('Deployment K8s Dev') {
       steps {
 			  sh "sed -i 's/tagversion/${BUILD_NUMBER}/g' 03-webserver-deployment-pattern-autoscale.yaml"
+        sh "kubectl config use-context kubernetes-admin@k8scluster-dev.local"
         sh 'kubectl apply -f 03-webserver-deployment-pattern-autoscale.yaml --record'
       }
     }
